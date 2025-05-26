@@ -21,8 +21,11 @@ def pregunta_05():
     Name: c2, dtype: int64
     """
     import pandas as pd
+    from pathlib import Path
 
-    tabla = pd.read_csv('../files/input/tbl0.tsv', sep='\t')
+    PROJECT_ROOT = Path(__file__).parent.parent
+    DATA_PATH = PROJECT_ROOT / "files" / "input"
+    tabla = pd.read_csv(DATA_PATH / 'tbl0.tsv', sep='\t')
 
     # Calcular el valor máximo de 'c2' por cada letra de 'c1'
     maximo = tabla.groupby('c1')['c2'].max()

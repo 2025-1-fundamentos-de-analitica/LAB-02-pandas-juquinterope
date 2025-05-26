@@ -21,10 +21,14 @@ def pregunta_13():
     Name: c5b, dtype: int64
     """
     import pandas as pd
+    from pathlib import Path
+
+    PROJECT_ROOT = Path(__file__).parent.parent
+    DATA_PATH = PROJECT_ROOT / "files" / "input"
 
     # Cargar los archivos tbl0.tsv y tbl2.tsv
-    tbl0 = pd.read_csv('../files/input/tbl0.tsv', sep='\t')
-    tbl2 = pd.read_csv('../files/input/tbl2.tsv', sep='\t')
+    tbl0 = pd.read_csv(DATA_PATH / 'tbl0.tsv', sep='\t')
+    tbl2 = pd.read_csv(DATA_PATH / 'tbl2.tsv', sep='\t')
 
     # Unir las tablas por la columna c0
     merged = pd.merge(tbl0, tbl2, on='c0')

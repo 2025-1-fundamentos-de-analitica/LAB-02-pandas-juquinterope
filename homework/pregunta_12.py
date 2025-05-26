@@ -23,9 +23,12 @@ def pregunta_12():
      39   39                    ggg:3,hhh:8,jjj:5
      """
      import pandas as pd
-     
+     from pathlib import Path
+
+     PROJECT_ROOT = Path(__file__).parent.parent
+     DATA_PATH = PROJECT_ROOT / "files" / "input"
      # Cargar el archivo tbl2.tsv
-     tabla = pd.read_csv('../files/input/tbl2.tsv', sep='\t')
+     tabla = pd.read_csv(DATA_PATH / 'tbl2.tsv', sep='\t')
      
      # Agrupar por 'c0' y concatenar los valores de 'c5a' y 'c5b' unidos por ':'
      resultado = tabla.groupby('c0').apply(

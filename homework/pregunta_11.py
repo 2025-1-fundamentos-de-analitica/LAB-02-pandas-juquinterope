@@ -23,9 +23,12 @@ def pregunta_11():
      39   39    a,d,f
      """
      import pandas as pd
-     
+     from pathlib import Path
+
+     PROJECT_ROOT = Path(__file__).parent.parent
+     DATA_PATH = PROJECT_ROOT / "files" / "input"
      # Cargar el archivo tbl1.tsv
-     tabla = pd.read_csv('../files/input/tbl1.tsv', sep='\t')
+     tabla = pd.read_csv(DATA_PATH / 'tbl1.tsv', sep='\t')
      
      # Agrupar por 'c0' y concatenar los valores de 'c4' en una lista separada por ','
      resultado = tabla.groupby('c0')['c4'].apply(lambda x: ','.join(sorted(set(x)))).reset_index()

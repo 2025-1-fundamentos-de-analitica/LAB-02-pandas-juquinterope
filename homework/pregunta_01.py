@@ -15,7 +15,11 @@ def pregunta_01():
 
     """
     import pandas as pd
-    tabla = pd.read_csv('../files/input/tbl0.tsv', sep='\t')
+    from pathlib import Path
+
+    PROJECT_ROOT = Path(__file__).parent.parent
+    DATA_PATH = PROJECT_ROOT / "files" / "input"
+    tabla = pd.read_csv(DATA_PATH / 'tbl0.tsv', sep='\t')
 
     return len(tabla)
 

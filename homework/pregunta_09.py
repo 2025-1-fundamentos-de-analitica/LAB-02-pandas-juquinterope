@@ -24,9 +24,12 @@ def pregunta_09():
 
     """
     import pandas as pd
+    from pathlib import Path
 
+    PROJECT_ROOT = Path(__file__).parent.parent
+    DATA_PATH = PROJECT_ROOT / "files" / "input"
     # Cargar el archivo tbl0.tsv
-    tabla = pd.read_csv('../files/input/tbl0.tsv', sep='\t')
+    tabla = pd.read_csv(DATA_PATH / 'tbl0.tsv', sep='\t')
 
     # Convertir la columna 'c3' a tipo datetime y extraer el año
     tabla['year'] = tabla['c3'].str.split('-').str[0]
