@@ -20,3 +20,15 @@ def pregunta_05():
     E    9
     Name: c2, dtype: int64
     """
+    import pandas as pd
+
+    tabla = pd.read_csv('../files/input/tbl0.tsv', sep='\t')
+
+    # Calcular el valor máximo de 'c2' por cada letra de 'c1'
+    maximo = tabla.groupby('c1')['c2'].max()
+
+    return maximo
+
+
+if __name__ == "__main__":
+    print(pregunta_05())

@@ -20,3 +20,21 @@ def pregunta_10():
     D                   1:2:3:5:5:7
     E   1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
+    import pandas as pd
+
+    # Cargar el archivo tbl0.tsv
+    tabla = pd.read_csv('../files/input/tbl0.tsv', sep='\t')
+
+    # Agrupar por 'c1' y concatenar los valores de 'c2' en una lista separada por ':'
+    resultado = tabla.groupby('c1')['c2'].apply(lambda x: ':'.join(map(str, x))).reset_index()
+    # Ordenar los valores de 'c2' dentro de cada grupo
+    resultado['c2'] = resultado['c2'].apply(lambda x: ':'.join(sorted(x.split(':'))))
+
+    # Renombrar las columnas
+    resultado.columns = ['c1', 'c2']
+
+    return resultado.set_index('c1')
+
+
+if __name__ == "__main__":
+    print(pregunta_10())

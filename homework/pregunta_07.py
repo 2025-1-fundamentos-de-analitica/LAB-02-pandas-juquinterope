@@ -20,3 +20,15 @@ def pregunta_07():
     E    67
     Name: c2, dtype: int64
     """
+    import pandas as pd
+
+    tabla = pd.read_csv('../files/input/tbl0.tsv', sep='\t')
+
+    # Calcular la suma de 'c2' por cada letra de 'c1'
+    suma = tabla.groupby('c1')['c2'].sum()
+
+    return suma
+
+
+if __name__ == "__main__":
+    print(pregunta_07())

@@ -14,3 +14,12 @@ def pregunta_02():
     4
 
     """
+    import pandas as pd
+
+    tabla = pd.read_csv('../files/input/tbl0.tsv', sep='\t')
+
+    return len(tabla.columns)
+
+
+if __name__ == "__main__":
+    print(pregunta_02())

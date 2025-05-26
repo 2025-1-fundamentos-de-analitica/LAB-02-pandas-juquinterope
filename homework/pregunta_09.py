@@ -23,3 +23,15 @@ def pregunta_09():
     39  39  E   5  1998-01-26  1998
 
     """
+    import pandas as pd
+
+    # Cargar el archivo tbl0.tsv
+    tabla = pd.read_csv('../files/input/tbl0.tsv', sep='\t')
+
+    # Convertir la columna 'c3' a tipo datetime y extraer el año
+    tabla['year'] = tabla['c3'].str.split('-').str[0]
+    return tabla
+
+
+if __name__ == "__main__":
+    print(pregunta_09())

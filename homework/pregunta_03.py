@@ -21,3 +21,15 @@ def pregunta_03():
     Name: count, dtype: int64
 
     """
+    import pandas as pd
+
+    tabla = pd.read_csv('../files/input/tbl0.tsv', sep='\t')
+
+    # Contar la cantidad de registros por cada letra en la columna 'c1'
+    conteo = tabla['c1'].value_counts().sort_index()
+
+    return conteo
+
+
+if __name__ == "__main__":
+    print(pregunta_03())
